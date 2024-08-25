@@ -23,6 +23,7 @@ build:
   before_script:
     - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     - apk add --no-cache git
+    - go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
   script:
     - go mod download
     - go test ./...
