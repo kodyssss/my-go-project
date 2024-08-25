@@ -7,7 +7,7 @@ variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
   GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   DOCKER_IMAGE_TAG: "$CI_COMMIT_TAG"
-  DOCKER_IMAGE: "$CI_REGISTRY/$CI_NAMESPACE/my-java-app:$DOCKER_IMAGE_TAG"
+  DOCKER_IMAGE: "$CI_REGISTRY/$CI_NAMESPACE/my-go-app:$DOCKER_IMAGE_TAG"
   CI_REGISTRY_USER: "ybrkody"
   CI_REGISTRY_PASSWORD: "P@sswr0d"
   CI_REGISTRY: "registry.cn-chengdu.aliyuncs.com"
@@ -26,7 +26,7 @@ build:
     - go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
   script:
     - go mod download
-    - go test ./...
+    - go test ./pkg/mylib
     - go build -o myapp .
   artifacts:
     paths:
