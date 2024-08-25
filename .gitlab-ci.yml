@@ -27,7 +27,7 @@ build:
   script:
     - go mod download
     - go test ./pkg/mylib
-    - go build -o myapp .
+    - go build -o myapp ./cmd/myapp
   artifacts:
     paths:
       - myapp
