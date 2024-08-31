@@ -34,19 +34,14 @@ build:
 
 sonarqube-check:
   stage: sonarqube-check
-  dependencies:
-    - build
   image: 
-    name: sonarsource/sonar-scanner-cli:latest
+    name: sonar-scanner:v1
     entrypoint: [""]
-    pull_policy: if-not-present
-  cache:
-    policy: pull
-    key: "${CI_COMMIT_SHORT_SHA}"
-    paths:
-      - sonar-scanner/
+  dependencies:
+    - build  
   script: 
-    - sonar-scanner
+    - ls
+    - sonar-scanner -Dsonar.sources=. -Dproject.settings=sonar-project.properties
   allow_failure: true
 
 
