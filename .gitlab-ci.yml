@@ -37,7 +37,7 @@ sonarqube-check:
   dependencies:
     - build
   image: 
-    name: sonarsource/sonar-scanner-cli: latest
+    name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
     pull_policy: if-not-present
   cache:
