@@ -34,19 +34,27 @@ build:
 
 sonarqube-check:
   stage: sonarqube-check
+  dependencies:
+    - build
   image: 
     name: sonar-scanner:v1
-    pull_policy: if-not-present
     entrypoint: [""]
-  dependencies:
-    - build  
+    pull_policy: if-not-present
+  cache:
+    policy: pull
+    key: "${CI_COMMIT_SHORT_SHA}"
+    paths:
+      - sonar-scanner/
   script: 
-    - ls
-    - sonar-scanner -Dsonar.sources=. -Dproject.settings=sonar-project.properties
+    - sonar-scanner
   allow_failure: true
+  rules:
+    - if: $CI_COMMIT_TAG
 
 
 docker-build-push:
+  only:
+    - tags
   stage: docker-build-push
   image: docker:20.10.16
   script:
