@@ -36,7 +36,7 @@ sonarqube-check:
   stage: sonarqube-check
   image: 
     name: sonar-scanner:v1
-    pull_policy: never
+    pull_policy: if-not-present
     entrypoint: [""]
   dependencies:
     - build  
