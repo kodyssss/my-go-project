@@ -17,10 +17,10 @@ RUN go mod download
 COPY . .
 
 # 构建应用程序
-RUN go build -o myapp ./cmd/myapp
+RUN go build -o main ./cmd/myapp
 
 # 暴露应用程序运行的端口
 EXPOSE 8080
 
-# 运行应用程序
-CMD ["./myapp"]
+# 运行应用
+CMD ["./main"]

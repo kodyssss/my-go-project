@@ -1,5 +1,10 @@
-package mylib
+package main
 
-func Hello() string {
-    return "Hello, World!"
+import (
+    "fmt"
+    "mylib"
+)
+
+func main() {
+    fmt.Println(mylib.Hello())
 }

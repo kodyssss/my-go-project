@@ -1,5 +1,13 @@
 package mylib
 
+import (
+    "os"
+)
+
 func Hello() string {
-    return "Hello, World! V1"
+    message := os.Getenv("GREETING_MESSAGE")
+    if message == "" {
+        message = "Hello, World! V1"
+    }
+    return message
 }
