@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cilium-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cilium-go
+  template:
+    metadata:
+      labels:
+        app: cilium-go
+    spec:
+      containers:
+      - name: cilium-go
+        image: cilium_go:v1
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: cilium-go-config
+        ports:
+        - containerPort: 8080
